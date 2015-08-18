@@ -1,0 +1,1090 @@
+From nmishra at symora.com  Wed Nov 21 19:26:22 2007
+From: nmishra at symora.com (Nachiketa Mishra)
+Date: Wed, 21 Nov 2007 12:26:22 -0600
+Subject: [Sax-users] Dell SP2008WFP Configuration with SLED
+Message-ID: <1195669582.4586.8.camel@agni.workgroup>
+
+Hi Guys,
+I am trying to configure the Dell Monitor SP2008WFP for dual head and I
+am not able to configure. The problems are
+
+1] I am not able to run the monitor and my laptop as separate windows. I
+am using a Dell Inspiron 1405 with Intel 945GM chipset and i810 driver
+which came default with Suse 10.2
+
+2] I tried changing the xorg.conf and still not able to get dual
+monitors working. This is my xorg.conf
+
+Section "Files"
+  FontPath     "/usr/X11R6/lib/X11/fonts/misc:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/local"
+  FontPath     "/usr/X11R6/lib/X11/fonts/75dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/100dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/Type1"
+  FontPath     "/usr/X11R6/lib/X11/fonts/URW"
+  FontPath     "/usr/X11R6/lib/X11/fonts/Speedo"
+  FontPath     "/usr/X11R6/lib/X11/fonts/PEX"
+  FontPath     "/usr/X11R6/lib/X11/fonts/cyrillic"
+  FontPath     "/usr/X11R6/lib/X11/fonts/latin2/misc:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/latin2/75dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/latin2/100dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/latin2/Type1"
+  FontPath     "/usr/X11R6/lib/X11/fonts/latin7/75dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/baekmuk:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/japanese:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/kwintv"
+ FontPath     "/usr/X11R6/lib/X11/fonts/truetype"
+  FontPath     "/usr/X11R6/lib/X11/fonts/uni:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/CID"
+  FontPath     "/usr/X11R6/lib/X11/fonts/ucs/misc:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/ucs/75dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/ucs/100dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/hellas/misc:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/hellas/75dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/hellas/100dpi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/hellas/Type1"
+  FontPath     "/usr/X11R6/lib/X11/fonts/misc/sgi:unscaled"
+  FontPath     "/usr/X11R6/lib/X11/fonts/xtest"
+  FontPath     "/opt/kde3/share/fonts"
+  InputDevices "/dev/gpmdata"
+  InputDevices "/dev/input/mice"
+EndSection
+
+Section "ServerFlags"
+  Option       "AllowMouseOpenFail" "on"
+EndSection
+
+Section "Module"
+  Load         "freetype"
+  Load         "type1"
+  Load         "dbe"
+  Load         "glx"
+  Load         "extmod"
+  Load         "v4l"
+  Load         "dri"
+EndSection
+
+Section "InputDevice"
+  Driver       "kbd"
+  Identifier   "Keyboard[0]"
+  Option       "Protocol" "Standard"
+  Option       "XkbLayout" "us"
+  Option       "XkbModel" "pc104"
+  Option       "XkbRules" "xfree86"
+EndSection
+
+
+Section "InputDevice"
+  Driver       "synaptics"
+  Identifier   "Mouse[1]"
+  Option       "Device" "/dev/input/mice"
+  Option       "Emulate3Buttons" "on"
+  Option       "Name" "Touchpad"
+  Option       "SHMConfig" "on"
+  Option       "Vendor" "Synaptics"
+  Option       "ZAxisMapping" "4 5"
+EndSection
+
+Section "InputDevice"
+  Driver       "mouse"
+  Identifier   "Mouse[3]"
+  Option       "Buttons" "5"
+  Option       "Device" "/dev/input/mice"
+  Option       "Name" "ImPS/2 Generic Wheel Mouse"
+  Option       "Protocol" "explorerps/2"
+  Option       "Vendor" "Sysp"
+  Option       "ZAxisMapping" "4 5"
+EndSection
+
+
+Section "Monitor"
+  DisplaySize  300 190
+  HorizSync    28-70
+  Identifier   "Monitor[0]"
+  ModelName    "CG002 141WD LCD MONITOR"
+  Option       "DPMS"
+  VendorName   "SEC"
+  VertRefresh  43-60
+  UseModes     "Modes[0]"
+EndSection
+
+Section "Monitor"
+  DisplaySize  320 240
+  HorizSync    30-83
+  Identifier   "Monitor[1]"
+  ModelName    "DELL DellSP2008WFP"
+  Option       "DPMS"
+  VendorName   "DELL"
+  VertRefresh  56-76
+  UseModes     "Modes[1]"
+EndSection
+
+
+Section "Modes"
+  Identifier   "Modes[0]"
+  Modeline      "1440x900" 102.81 1440 1520 1672 1904 900 901 904 931
+  Modeline      "1366x768" 82.16 1368 1432 1576 1784 768 769 772 794
+  Modeline      "1280x800" 80.58 1280 1344 1480 1680 800 801 804 827
+  Modeline      "1152x864" 78.82 1152 1216 1336 1520 864 865 868 894
+  Modeline      "1280x768" 77.37 1280 1344 1480 1680 768 769 772 794
+  Modeline      "1024x768" 61.89 1024 1080 1184 1344 768 769 772 794
+  Modeline      "1280x600" 58.78 1280 1328 1456 1632 600 601 604 621
+  Modeline      "1024x600" 47.26 1024 1064 1168 1312 600 601 604 621
+  Modeline      "800x600" 36.88 800 832 912 1024 600 601 604 621
+  Modeline      "768x576" 33.74 768 792 872 976 576 577 580 596
+  Modeline      "640x480" 23.86 640 656 720 800 480 481 484 497
+  Modeline      "640x480" 23.06 640 656 720 800 480 481 484 497
+EndSection
+
+Section "Modes"
+  Identifier   "Modes[1]"
+  Modeline      "1440x900" 134.52 1440 1536 1688 1936 900 901 904 939
+  Modeline      "1440x900" 132.71 1440 1536 1688 1936 900 901 904 939
+  Modeline      "1440x900" 130.75 1440 1536 1688 1936 900 901 904 938
+  Modeline      "1366x768" 107.78 1368 1448 1592 1816 768 769 772 802
+  Modeline      "1366x768" 106.19 1368 1448 1592 1816 768 769 772 801
+  Modeline      "1366x768" 104.73 1368 1448 1592 1816 768 769 772 801
+  Modeline      "1280x800" 105.78 1280 1360 1496 1712 800 801 804 835
+  Modeline      "1280x800" 104.35 1280 1360 1496 1712 800 801 804 835
+  Modeline      "1280x800" 102.80 1280 1360 1496 1712 800 801 804 834
+  Modeline      "1152x864" 103.59 1152 1224 1352 1552 864 865 868 902
+  Modeline      "1152x864" 102.08 1152 1224 1352 1552 864 865 868 901
+  Modeline      "1152x864" 99.64 1152 1224 1344 1536 864 865 868 901
+  Modeline      "1280x768" 101.60 1280 1360 1496 1712 768 769 772 802
+  Modeline      "1280x768" 99.17 1280 1352 1488 1696 768 769 772 801
+  Modeline      "1280x768" 97.81 1280 1352 1488 1696 768 769 772 801
+  Modeline      "1024x768" 80.71 1024 1080 1192 1360 768 769 772 802
+  Modeline      "1024x768" 79.52 1024 1080 1192 1360 768 769 772 801
+  Modeline      "1024x768" 78.43 1024 1080 1192 1360 768 769 772 801
+  Modeline      "1280x600" 77.82 1280 1344 1480 1680 600 601 604 626
+  Modeline      "1280x600" 76.04 1280 1336 1472 1664 600 601 604 626
+  Modeline      "1280x600" 75.00 1280 1336 1472 1664 600 601 604 626
+  Modeline      "1024x600" 62.26 1024 1080 1184 1344 600 601 604 626
+  Modeline      "1024x600" 61.42 1024 1080 1184 1344 600 601 604 626
+  Modeline      "1024x600" 59.86 1024 1072 1176 1328 600 601 604 626
+  Modeline      "800x600" 48.18 800 840 920 1040 600 601 604 626
+  Modeline      "800x600" 47.53 800 840 920 1040 600 601 604 626
+  Modeline      "800x600" 46.87 800 840 920 1040 600 601 604 626
+  Modeline      "768x576" 44.83 768 808 888 1008 576 577 580 601
+  Modeline      "768x576" 43.52 768 800 880 992 576 577 580 601
+  Modeline      "768x576" 42.93 768 800 880 992 576 577 580 601
+  Modeline      "640x480" 30.25 640 664 728 816 480 481 484 501
+  Modeline      "640x480" 29.84 640 664 728 816 480 481 484 501
+  Modeline      "640x480" 29.43 640 664 728 816 480 481 484 501
+EndSection
+
+
+Section "Screen"
+  DefaultDepth 24
+  SubSection "Display"
+    Depth      15
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  SubSection "Display"
+    Depth      16
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  SubSection "Display"
+    Depth      24
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  SubSection "Display"
+    Depth      8
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  Device       "Device[0]"
+  Identifier   "Screen[0]"
+  Monitor      "Monitor[0]"
+EndSection
+
+Section "Screen"
+  DefaultDepth 24
+  SubSection "Display"
+    Depth      15
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  SubSection "Display"
+    Depth      16
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  SubSection "Display"
+    Depth      24
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  SubSection "Display"
+    Depth      8
+    Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+"1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+  EndSubSection
+  Device       "Device[0]"
+  Identifier   "Screen[1]"
+  Monitor      "Monitor[1]"
+EndSection
+
+
+Section "Device"
+  BoardName    "945 GM"
+  BusID        "0:2:0"
+  Driver       "i810"
+  Identifier   "Device[0]"
+  Option       "SaXDualHead"
+  Option       "Clone"
+  Option       "NoDDC"
+  Option       "LFP" ""
+  Option       "usevnc" "no"
+  Option       "MonitorLayout" "CRT,LFP"
+  Option       "SaXDualMonitorVendor" "--> VESA"
+  Option       "SaXDualOrientation" "off"
+  Option       "SaXDualResolution" "off"
+  Option       "CloneRefresh" "50-60"
+  Option       "SaXDualMode" "off"
+  Option       "SaXDualHSync" "off"
+  Option       "SaXDualMonitorModel" "1024X768 at 60HZ"
+  Option       "SaXDualVSync" "50-60"
+  Screen       0
+  VendorName   "Intel"
+EndSection
+
+
+Section "ServerLayout"
+  Identifier   "Layout[all]"
+  InputDevice  "Keyboard[0]" "CoreKeyboard"
+  InputDevice  "Mouse[1]" "CorePointer"
+  InputDevice  "Mouse[3]" "SendCoreEvents"
+  Option       "Clone" "off"
+  Option       "Xinerama" "off"
+  Screen       "Screen[0]"
+EndSection
+
+
+Section "DRI"
+    Group      "video"
+    Mode       0660
+EndSection
+
+Section "Extensions"
+EndSection
+
+
+
+
+
+
+
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20071121/79388111/attachment.html>
+
+From elitim at gmail.com  Wed Nov 21 22:39:52 2007
+From: elitim at gmail.com (daniel)
+Date: Wed, 21 Nov 2007 22:39:52 +0100
+Subject: [Sax-users] Dell SP2008WFP Configuration with SLED
+In-Reply-To: <1195669582.4586.8.camel@agni.workgroup>
+References: <1195669582.4586.8.camel@agni.workgroup>
+Message-ID: <200711212239.55336.elitim@gmail.com>
+
+Hi! I'm using Debian now. I managed to have both monitors working, with 
+xinerama...according to your config, you have both monitors showing the SAME 
+screen, right?
+How do you plug the monitors? With the inboard vga out, I guess...look for 
+some config of the module of your card, normally, this model works well...
+
+Is there any special key on your laptop, like crt/lcd or A/A, etc...On my Dell 
+laptop, I have this key, I can't remember now if it had to be configured 
+too...
+
+sometimes also my dual wasn't working right away, but if I resarted my 
+session, it worked...
+
+I don't use it anymore, as I have a desktop better for graphics now, it wasn't 
+the case before, my laptop was better than my desktop, regarding graphic 
+chip...
+
+Anyway, these are just a little clues...Have both monitors plugged and on, 
+start your computer
+
+Hum, I'm looking again your file, there is only ONE screen setup, I think you 
+need to declare screen0 AND screen1, then map accordingly...like you need to 
+have two time the same file, and you need to declare monitor0, monitor1, 
+screen0, screen1, then map accordingly...
+
+If you want, I can try to find my old xinerama file, but I think I erased it, 
+sorry...
+
+Anyway, stay in touch, if you don't have a working solution, I can look more 
+deeply into it!
+
+
+
+On Wednesday 21 November 2007 19:26:22 Nachiketa Mishra wrote:
+> Hi Guys,
+> I am trying to configure the Dell Monitor SP2008WFP for dual head and I
+> am not able to configure. The problems are
+>
+> 1] I am not able to run the monitor and my laptop as separate windows. I
+> am using a Dell Inspiron 1405 with Intel 945GM chipset and i810 driver
+> which came default with Suse 10.2
+>
+> 2] I tried changing the xorg.conf and still not able to get dual
+> monitors working. This is my xorg.conf
+>
+> Section "Files"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/local"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/Type1"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/URW"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/Speedo"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/PEX"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/cyrillic"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/Type1"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin7/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/baekmuk:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/japanese:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/kwintv"
+>  FontPath     "/usr/X11R6/lib/X11/fonts/truetype"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/uni:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/CID"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/ucs/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/ucs/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/ucs/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/Type1"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/misc/sgi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/xtest"
+>   FontPath     "/opt/kde3/share/fonts"
+>   InputDevices "/dev/gpmdata"
+>   InputDevices "/dev/input/mice"
+> EndSection
+>
+> Section "ServerFlags"
+>   Option       "AllowMouseOpenFail" "on"
+> EndSection
+>
+> Section "Module"
+>   Load         "freetype"
+>   Load         "type1"
+>   Load         "dbe"
+>   Load         "glx"
+>   Load         "extmod"
+>   Load         "v4l"
+>   Load         "dri"
+> EndSection
+>
+> Section "InputDevice"
+>   Driver       "kbd"
+>   Identifier   "Keyboard[0]"
+>   Option       "Protocol" "Standard"
+>   Option       "XkbLayout" "us"
+>   Option       "XkbModel" "pc104"
+>   Option       "XkbRules" "xfree86"
+> EndSection
+>
+>
+> Section "InputDevice"
+>   Driver       "synaptics"
+>   Identifier   "Mouse[1]"
+>   Option       "Device" "/dev/input/mice"
+>   Option       "Emulate3Buttons" "on"
+>   Option       "Name" "Touchpad"
+>   Option       "SHMConfig" "on"
+>   Option       "Vendor" "Synaptics"
+>   Option       "ZAxisMapping" "4 5"
+> EndSection
+>
+> Section "InputDevice"
+>   Driver       "mouse"
+>   Identifier   "Mouse[3]"
+>   Option       "Buttons" "5"
+>   Option       "Device" "/dev/input/mice"
+>   Option       "Name" "ImPS/2 Generic Wheel Mouse"
+>   Option       "Protocol" "explorerps/2"
+>   Option       "Vendor" "Sysp"
+>   Option       "ZAxisMapping" "4 5"
+> EndSection
+>
+>
+> Section "Monitor"
+>   DisplaySize  300 190
+>   HorizSync    28-70
+>   Identifier   "Monitor[0]"
+>   ModelName    "CG002 141WD LCD MONITOR"
+>   Option       "DPMS"
+>   VendorName   "SEC"
+>   VertRefresh  43-60
+>   UseModes     "Modes[0]"
+> EndSection
+>
+> Section "Monitor"
+>   DisplaySize  320 240
+>   HorizSync    30-83
+>   Identifier   "Monitor[1]"
+>   ModelName    "DELL DellSP2008WFP"
+>   Option       "DPMS"
+>   VendorName   "DELL"
+>   VertRefresh  56-76
+>   UseModes     "Modes[1]"
+> EndSection
+>
+>
+> Section "Modes"
+>   Identifier   "Modes[0]"
+>   Modeline      "1440x900" 102.81 1440 1520 1672 1904 900 901 904 931
+>   Modeline      "1366x768" 82.16 1368 1432 1576 1784 768 769 772 794
+>   Modeline      "1280x800" 80.58 1280 1344 1480 1680 800 801 804 827
+>   Modeline      "1152x864" 78.82 1152 1216 1336 1520 864 865 868 894
+>   Modeline      "1280x768" 77.37 1280 1344 1480 1680 768 769 772 794
+>   Modeline      "1024x768" 61.89 1024 1080 1184 1344 768 769 772 794
+>   Modeline      "1280x600" 58.78 1280 1328 1456 1632 600 601 604 621
+>   Modeline      "1024x600" 47.26 1024 1064 1168 1312 600 601 604 621
+>   Modeline      "800x600" 36.88 800 832 912 1024 600 601 604 621
+>   Modeline      "768x576" 33.74 768 792 872 976 576 577 580 596
+>   Modeline      "640x480" 23.86 640 656 720 800 480 481 484 497
+>   Modeline      "640x480" 23.06 640 656 720 800 480 481 484 497
+> EndSection
+>
+> Section "Modes"
+>   Identifier   "Modes[1]"
+>   Modeline      "1440x900" 134.52 1440 1536 1688 1936 900 901 904 939
+>   Modeline      "1440x900" 132.71 1440 1536 1688 1936 900 901 904 939
+>   Modeline      "1440x900" 130.75 1440 1536 1688 1936 900 901 904 938
+>   Modeline      "1366x768" 107.78 1368 1448 1592 1816 768 769 772 802
+>   Modeline      "1366x768" 106.19 1368 1448 1592 1816 768 769 772 801
+>   Modeline      "1366x768" 104.73 1368 1448 1592 1816 768 769 772 801
+>   Modeline      "1280x800" 105.78 1280 1360 1496 1712 800 801 804 835
+>   Modeline      "1280x800" 104.35 1280 1360 1496 1712 800 801 804 835
+>   Modeline      "1280x800" 102.80 1280 1360 1496 1712 800 801 804 834
+>   Modeline      "1152x864" 103.59 1152 1224 1352 1552 864 865 868 902
+>   Modeline      "1152x864" 102.08 1152 1224 1352 1552 864 865 868 901
+>   Modeline      "1152x864" 99.64 1152 1224 1344 1536 864 865 868 901
+>   Modeline      "1280x768" 101.60 1280 1360 1496 1712 768 769 772 802
+>   Modeline      "1280x768" 99.17 1280 1352 1488 1696 768 769 772 801
+>   Modeline      "1280x768" 97.81 1280 1352 1488 1696 768 769 772 801
+>   Modeline      "1024x768" 80.71 1024 1080 1192 1360 768 769 772 802
+>   Modeline      "1024x768" 79.52 1024 1080 1192 1360 768 769 772 801
+>   Modeline      "1024x768" 78.43 1024 1080 1192 1360 768 769 772 801
+>   Modeline      "1280x600" 77.82 1280 1344 1480 1680 600 601 604 626
+>   Modeline      "1280x600" 76.04 1280 1336 1472 1664 600 601 604 626
+>   Modeline      "1280x600" 75.00 1280 1336 1472 1664 600 601 604 626
+>   Modeline      "1024x600" 62.26 1024 1080 1184 1344 600 601 604 626
+>   Modeline      "1024x600" 61.42 1024 1080 1184 1344 600 601 604 626
+>   Modeline      "1024x600" 59.86 1024 1072 1176 1328 600 601 604 626
+>   Modeline      "800x600" 48.18 800 840 920 1040 600 601 604 626
+>   Modeline      "800x600" 47.53 800 840 920 1040 600 601 604 626
+>   Modeline      "800x600" 46.87 800 840 920 1040 600 601 604 626
+>   Modeline      "768x576" 44.83 768 808 888 1008 576 577 580 601
+>   Modeline      "768x576" 43.52 768 800 880 992 576 577 580 601
+>   Modeline      "768x576" 42.93 768 800 880 992 576 577 580 601
+>   Modeline      "640x480" 30.25 640 664 728 816 480 481 484 501
+>   Modeline      "640x480" 29.84 640 664 728 816 480 481 484 501
+>   Modeline      "640x480" 29.43 640 664 728 816 480 481 484 501
+> EndSection
+>
+>
+> Section "Screen"
+>   DefaultDepth 24
+>   SubSection "Display"
+>     Depth      15
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      16
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      24
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      8
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   Device       "Device[0]"
+>   Identifier   "Screen[0]"
+>   Monitor      "Monitor[0]"
+> EndSection
+>
+> Section "Screen"
+>   DefaultDepth 24
+>   SubSection "Display"
+>     Depth      15
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      16
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      24
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      8
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   Device       "Device[0]"
+>   Identifier   "Screen[1]"
+>   Monitor      "Monitor[1]"
+> EndSection
+>
+>
+> Section "Device"
+>   BoardName    "945 GM"
+>   BusID        "0:2:0"
+>   Driver       "i810"
+>   Identifier   "Device[0]"
+>   Option       "SaXDualHead"
+>   Option       "Clone"
+>   Option       "NoDDC"
+>   Option       "LFP" ""
+>   Option       "usevnc" "no"
+>   Option       "MonitorLayout" "CRT,LFP"
+>   Option       "SaXDualMonitorVendor" "--> VESA"
+>   Option       "SaXDualOrientation" "off"
+>   Option       "SaXDualResolution" "off"
+>   Option       "CloneRefresh" "50-60"
+>   Option       "SaXDualMode" "off"
+>   Option       "SaXDualHSync" "off"
+>   Option       "SaXDualMonitorModel" "1024X768 at 60HZ"
+>   Option       "SaXDualVSync" "50-60"
+>   Screen       0
+>   VendorName   "Intel"
+> EndSection
+>
+>
+> Section "ServerLayout"
+>   Identifier   "Layout[all]"
+>   InputDevice  "Keyboard[0]" "CoreKeyboard"
+>   InputDevice  "Mouse[1]" "CorePointer"
+>   InputDevice  "Mouse[3]" "SendCoreEvents"
+>   Option       "Clone" "off"
+>   Option       "Xinerama" "off"
+>   Screen       "Screen[0]"
+> EndSection
+>
+>
+> Section "DRI"
+>     Group      "video"
+>     Mode       0660
+> EndSection
+>
+> Section "Extensions"
+> EndSection
+
+
+
+-- 
+Je viens de publier mon premier livre:
+
+http://www.inlibroveritas.net/lire/oeuvre10296.html
+
+
+
+From elitim at gmail.com  Thu Nov 22 02:22:48 2007
+From: elitim at gmail.com (daniel)
+Date: Thu, 22 Nov 2007 02:22:48 +0100
+Subject: [Sax-users] Dell SP2008WFP Configuration with SLED
+In-Reply-To: <1195669582.4586.8.camel@agni.workgroup>
+References: <1195669582.4586.8.camel@agni.workgroup>
+Message-ID: <200711220222.51507.elitim@gmail.com>
+
+See? look THIS file...it shows the DOUBLE input, device 1 device 2 etc...
+
+mmm, that's what you did...but it looks like you missed a screen1 in 
+serverlayout...try adding the line screen1, you can also tell the screen 
+where to be, left, right, etc...
+
+Have fun! (keep a copy of your WORKING xorg.conf files somewhere...comes handy 
+when no screen found...just have to do a cp from the saved file that worked 
+to xorg.conf and you can restart your xsession...in debian, it does it 
+automaticaly)
+
+ection "Device"
+        Identifier      "Generic Video Card"
+        Driver          "i810"
+        VideoRam        65536
+        Screen          0
+       #Option          "XAANoOffscreenPixmaps" "true"
+        Option          "DRI"     "false"
+        Option "MonitorLayout" "DFP,LFP"
+        BusID           "PCI:0:2:0"
+        #Option "CheckLid" "true"
+EndSection
+
+Section "Device"
+        Identifier      "Device1"
+        VideoRam        65536
+        Driver          "i810"
+        Screen          1
+        Option          "DRI" "false"
+        Option "MonitorLayout" "DFP,LFP"
+        BusID           "PCI:0:2:0"
+EndSection
+
+
+Section "Monitor"
+        Identifier      "Generic Monitor"
+        Option          "DPMS"
+        HorizSync       20-150
+        VertRefresh     50-70
+EndSection
+
+
+Section "Monitor"
+        Identifier      "External Monitor"
+        Option          "DPMS"
+        ModeLine        "1680x1050" 119.0 1680 1728 1760 1840 1050 1053 1059 
+1080 -HSync +VSync
+EndSection
+
+Section "Screen"
+        Identifier      "Default Screen"
+        Device          "Generic Video Card"
+        Monitor         "Generic Monitor"
+        DefaultDepth    24
+        SubSection "Display"
+                Depth           1
+                Modes           "1280x800" "1024x768" "800x600" "640x480"
+        EndSubSection
+        SubSection "Display"
+                Depth           4
+                Modes           "1280x800" "1024x768" "800x600" "640x480"
+        EndSubSection
+        SubSection "Display"
+                Depth           8
+                Modes           "1280x800" "1024x768" "800x600" "640x480"
+        EndSubSection
+        SubSection "Display"
+                Depth           15
+                Modes           "1280x800" "1024x768" "800x600" "640x480"
+        EndSubSection
+        SubSection "Display"
+                Depth           16
+                Modes           "1280x800" "1024x768" "800x600" "640x480"
+        EndSubSection
+        SubSection "Display"
+                Depth           24
+                Modes           "1280x800" "1024x768" "800x600" "640x480"
+        EndSubSection
+EndSection
+
+Section "Screen"
+        Identifier "Secondary Screen"
+        Device "Device1"
+        Monitor "External Monitor"
+        DefaultDepth 24
+        SubSection "Display"
+                   Depth 1
+                   Modes "1680x1050" "1024x768" "800x600"
+        EndSubSection
+        SubSection "Display"
+                   Depth 4
+                   Modes "1680x1050" "1024x768" "800x600"
+        EndSubSection
+        SubSection "Display"
+                   Depth 8
+                   Modes "1680x1050" "1024x768" "800x600"
+        EndSubSection
+        SubSection "Display"
+                   Depth 16
+                   Modes "1680x1050" "1024x768" "800x600"
+        EndSubSection
+        SubSection "Display"
+                   Depth 24
+                   Modes "1680x1050" "1024x768" "800x600"
+        EndSubSection
+EndSection
+
+#Section "ServerLayout"
+#       Identifier      "Default Layout"
+#       Screen          "Default Screen"
+#       InputDevice     "Generic Keyboard"
+#       InputDevice     "Configured Mouse"
+#       InputDevice     "Synaptics Touchpad"
+#EndSection
+
+Section "ServerLayout"
+        Identifier "Dual-monitor Layout"
+        Screen 0 "Default Screen"
+        Screen 1 "Secondary Screen" LeftOf "Default Screen"
+        Option "Clone" "On"
+        #Option "Xinerama" "On"
+        #Option         "AIGLX" "true"
+        InputDevice "Generic Keyboard"
+        InputDevice "Configured Mouse"
+        InputDevice "Synaptics Touchpad"
+EndSection
+
+#Section "DRI"
+#        Mode    0666
+#EndSection
+
+
+
+
+On Wednesday 21 November 2007 19:26:22 Nachiketa Mishra wrote:
+> Hi Guys,
+> I am trying to configure the Dell Monitor SP2008WFP for dual head and I
+> am not able to configure. The problems are
+>
+> 1] I am not able to run the monitor and my laptop as separate windows. I
+> am using a Dell Inspiron 1405 with Intel 945GM chipset and i810 driver
+> which came default with Suse 10.2
+>
+> 2] I tried changing the xorg.conf and still not able to get dual
+> monitors working. This is my xorg.conf
+>
+> Section "Files"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/local"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/Type1"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/URW"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/Speedo"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/PEX"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/cyrillic"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin2/Type1"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/latin7/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/baekmuk:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/japanese:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/kwintv"
+>  FontPath     "/usr/X11R6/lib/X11/fonts/truetype"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/uni:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/CID"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/ucs/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/ucs/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/ucs/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/misc:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/75dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/100dpi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/hellas/Type1"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/misc/sgi:unscaled"
+>   FontPath     "/usr/X11R6/lib/X11/fonts/xtest"
+>   FontPath     "/opt/kde3/share/fonts"
+>   InputDevices "/dev/gpmdata"
+>   InputDevices "/dev/input/mice"
+> EndSection
+>
+> Section "ServerFlags"
+>   Option       "AllowMouseOpenFail" "on"
+> EndSection
+>
+> Section "Module"
+>   Load         "freetype"
+>   Load         "type1"
+>   Load         "dbe"
+>   Load         "glx"
+>   Load         "extmod"
+>   Load         "v4l"
+>   Load         "dri"
+> EndSection
+>
+> Section "InputDevice"
+>   Driver       "kbd"
+>   Identifier   "Keyboard[0]"
+>   Option       "Protocol" "Standard"
+>   Option       "XkbLayout" "us"
+>   Option       "XkbModel" "pc104"
+>   Option       "XkbRules" "xfree86"
+> EndSection
+>
+>
+> Section "InputDevice"
+>   Driver       "synaptics"
+>   Identifier   "Mouse[1]"
+>   Option       "Device" "/dev/input/mice"
+>   Option       "Emulate3Buttons" "on"
+>   Option       "Name" "Touchpad"
+>   Option       "SHMConfig" "on"
+>   Option       "Vendor" "Synaptics"
+>   Option       "ZAxisMapping" "4 5"
+> EndSection
+>
+> Section "InputDevice"
+>   Driver       "mouse"
+>   Identifier   "Mouse[3]"
+>   Option       "Buttons" "5"
+>   Option       "Device" "/dev/input/mice"
+>   Option       "Name" "ImPS/2 Generic Wheel Mouse"
+>   Option       "Protocol" "explorerps/2"
+>   Option       "Vendor" "Sysp"
+>   Option       "ZAxisMapping" "4 5"
+> EndSection
+>
+>
+> Section "Monitor"
+>   DisplaySize  300 190
+>   HorizSync    28-70
+>   Identifier   "Monitor[0]"
+>   ModelName    "CG002 141WD LCD MONITOR"
+>   Option       "DPMS"
+>   VendorName   "SEC"
+>   VertRefresh  43-60
+>   UseModes     "Modes[0]"
+> EndSection
+>
+> Section "Monitor"
+>   DisplaySize  320 240
+>   HorizSync    30-83
+>   Identifier   "Monitor[1]"
+>   ModelName    "DELL DellSP2008WFP"
+>   Option       "DPMS"
+>   VendorName   "DELL"
+>   VertRefresh  56-76
+>   UseModes     "Modes[1]"
+> EndSection
+>
+>
+> Section "Modes"
+>   Identifier   "Modes[0]"
+>   Modeline      "1440x900" 102.81 1440 1520 1672 1904 900 901 904 931
+>   Modeline      "1366x768" 82.16 1368 1432 1576 1784 768 769 772 794
+>   Modeline      "1280x800" 80.58 1280 1344 1480 1680 800 801 804 827
+>   Modeline      "1152x864" 78.82 1152 1216 1336 1520 864 865 868 894
+>   Modeline      "1280x768" 77.37 1280 1344 1480 1680 768 769 772 794
+>   Modeline      "1024x768" 61.89 1024 1080 1184 1344 768 769 772 794
+>   Modeline      "1280x600" 58.78 1280 1328 1456 1632 600 601 604 621
+>   Modeline      "1024x600" 47.26 1024 1064 1168 1312 600 601 604 621
+>   Modeline      "800x600" 36.88 800 832 912 1024 600 601 604 621
+>   Modeline      "768x576" 33.74 768 792 872 976 576 577 580 596
+>   Modeline      "640x480" 23.86 640 656 720 800 480 481 484 497
+>   Modeline      "640x480" 23.06 640 656 720 800 480 481 484 497
+> EndSection
+>
+> Section "Modes"
+>   Identifier   "Modes[1]"
+>   Modeline      "1440x900" 134.52 1440 1536 1688 1936 900 901 904 939
+>   Modeline      "1440x900" 132.71 1440 1536 1688 1936 900 901 904 939
+>   Modeline      "1440x900" 130.75 1440 1536 1688 1936 900 901 904 938
+>   Modeline      "1366x768" 107.78 1368 1448 1592 1816 768 769 772 802
+>   Modeline      "1366x768" 106.19 1368 1448 1592 1816 768 769 772 801
+>   Modeline      "1366x768" 104.73 1368 1448 1592 1816 768 769 772 801
+>   Modeline      "1280x800" 105.78 1280 1360 1496 1712 800 801 804 835
+>   Modeline      "1280x800" 104.35 1280 1360 1496 1712 800 801 804 835
+>   Modeline      "1280x800" 102.80 1280 1360 1496 1712 800 801 804 834
+>   Modeline      "1152x864" 103.59 1152 1224 1352 1552 864 865 868 902
+>   Modeline      "1152x864" 102.08 1152 1224 1352 1552 864 865 868 901
+>   Modeline      "1152x864" 99.64 1152 1224 1344 1536 864 865 868 901
+>   Modeline      "1280x768" 101.60 1280 1360 1496 1712 768 769 772 802
+>   Modeline      "1280x768" 99.17 1280 1352 1488 1696 768 769 772 801
+>   Modeline      "1280x768" 97.81 1280 1352 1488 1696 768 769 772 801
+>   Modeline      "1024x768" 80.71 1024 1080 1192 1360 768 769 772 802
+>   Modeline      "1024x768" 79.52 1024 1080 1192 1360 768 769 772 801
+>   Modeline      "1024x768" 78.43 1024 1080 1192 1360 768 769 772 801
+>   Modeline      "1280x600" 77.82 1280 1344 1480 1680 600 601 604 626
+>   Modeline      "1280x600" 76.04 1280 1336 1472 1664 600 601 604 626
+>   Modeline      "1280x600" 75.00 1280 1336 1472 1664 600 601 604 626
+>   Modeline      "1024x600" 62.26 1024 1080 1184 1344 600 601 604 626
+>   Modeline      "1024x600" 61.42 1024 1080 1184 1344 600 601 604 626
+>   Modeline      "1024x600" 59.86 1024 1072 1176 1328 600 601 604 626
+>   Modeline      "800x600" 48.18 800 840 920 1040 600 601 604 626
+>   Modeline      "800x600" 47.53 800 840 920 1040 600 601 604 626
+>   Modeline      "800x600" 46.87 800 840 920 1040 600 601 604 626
+>   Modeline      "768x576" 44.83 768 808 888 1008 576 577 580 601
+>   Modeline      "768x576" 43.52 768 800 880 992 576 577 580 601
+>   Modeline      "768x576" 42.93 768 800 880 992 576 577 580 601
+>   Modeline      "640x480" 30.25 640 664 728 816 480 481 484 501
+>   Modeline      "640x480" 29.84 640 664 728 816 480 481 484 501
+>   Modeline      "640x480" 29.43 640 664 728 816 480 481 484 501
+> EndSection
+>
+>
+> Section "Screen"
+>   DefaultDepth 24
+>   SubSection "Display"
+>     Depth      15
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      16
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      24
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      8
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   Device       "Device[0]"
+>   Identifier   "Screen[0]"
+>   Monitor      "Monitor[0]"
+> EndSection
+>
+> Section "Screen"
+>   DefaultDepth 24
+>   SubSection "Display"
+>     Depth      15
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      16
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      24
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   SubSection "Display"
+>     Depth      8
+>     Modes      "1440x900" "1366x768" "1280x800" "1152x864" "1280x768"
+> "1024x768" "1280x600" "1024x600" "800x600" "768x576" "640x480"
+>   EndSubSection
+>   Device       "Device[0]"
+>   Identifier   "Screen[1]"
+>   Monitor      "Monitor[1]"
+> EndSection
+>
+>
+> Section "Device"
+>   BoardName    "945 GM"
+>   BusID        "0:2:0"
+>   Driver       "i810"
+>   Identifier   "Device[0]"
+>   Option       "SaXDualHead"
+>   Option       "Clone"
+>   Option       "NoDDC"
+>   Option       "LFP" ""
+>   Option       "usevnc" "no"
+>   Option       "MonitorLayout" "CRT,LFP"
+>   Option       "SaXDualMonitorVendor" "--> VESA"
+>   Option       "SaXDualOrientation" "off"
+>   Option       "SaXDualResolution" "off"
+>   Option       "CloneRefresh" "50-60"
+>   Option       "SaXDualMode" "off"
+>   Option       "SaXDualHSync" "off"
+>   Option       "SaXDualMonitorModel" "1024X768 at 60HZ"
+>   Option       "SaXDualVSync" "50-60"
+>   Screen       0
+>   VendorName   "Intel"
+> EndSection
+>
+>
+> Section "ServerLayout"
+>   Identifier   "Layout[all]"
+>   InputDevice  "Keyboard[0]" "CoreKeyboard"
+>   InputDevice  "Mouse[1]" "CorePointer"
+>   InputDevice  "Mouse[3]" "SendCoreEvents"
+>   Option       "Clone" "off"
+>   Option       "Xinerama" "off"
+>   Screen       "Screen[0]"
+> EndSection
+>
+>
+> Section "DRI"
+>     Group      "video"
+>     Mode       0660
+> EndSection
+>
+> Section "Extensions"
+> EndSection
+
+
+
+-- 
+Je viens de publier mon premier livre:
+
+http://www.inlibroveritas.net/lire/oeuvre10296.html
+
+
+
+From ms at suse.de  Thu Nov 22 10:48:26 2007
+From: ms at suse.de (Marcus =?iso-8859-15?Q?Sch=E4fer?=)
+Date: Thu, 22 Nov 2007 10:48:26 +0100
+Subject: [Sax-users] Dell SP2008WFP Configuration with SLED
+In-Reply-To: <1195669582.4586.8.camel@agni.workgroup>
+References: <1195669582.4586.8.camel@agni.workgroup>
+Message-ID: <20071122094826.GA18552@D7.ddts.net>
+
+Hi,
+
+> 1] I am not able to run the monitor and my laptop as separate windows. I
+> am using a Dell Inspiron 1405 with Intel 945GM chipset and i810 driver
+> which came default with Suse 10.2
+
+The i810 driver supports only clone mode. You should try to use the
+new intel driver (name is "intel") which is supported with SuSE 10.3
+for the first time. The driver is not perfect but it supports different
+dualhead modes and different resolutions per screen.
+
+Regards,
+Marcus
+-- 
+ Public Key available
+ gpg --keyserver gpg-keyserver.de --recv-keys 0xCCE3C6A2
+ -------------------------------------------------------
+ Marcus Sch?fer (Res. & Dev.)   SUSE LINUX Products GmbH
+ Tel: 0911-740 53 0             Maxfeldstrasse 5
+ FAX: 0911-740 53 479           D-90409 N?rnberg
+ GF: Markus Rex                 HRB: 16746 (AG N?rnberg)
+ http://www.suse.de             Germany
+ -------------------------------------------------------
+
+
+From nmishra at symora.com  Thu Nov 22 16:04:51 2007
+From: nmishra at symora.com (Nachiketa Mishra)
+Date: Thu, 22 Nov 2007 09:04:51 -0600
+Subject: [Sax-users] Dell SP2008WFP Configuration with SLED
+In-Reply-To: <20071122094826.GA18552@D7.ddts.net>
+References: <1195669582.4586.8.camel@agni.workgroup>
+	<20071122094826.GA18552@D7.ddts.net>
+Message-ID: <1195743891.4275.1.camel@agni.workgroup>
+
+Thanks. I will give it a try.
+
+Nachiketa
+
+On Thu, 2007-11-22 at 10:48 +0100, Marcus Sch?fer wrote:
+
+> Hi,
+> 
+> > 1] I am not able to run the monitor and my laptop as separate windows. I
+> > am using a Dell Inspiron 1405 with Intel 945GM chipset and i810 driver
+> > which came default with Suse 10.2
+> 
+> The i810 driver supports only clone mode. You should try to use the
+> new intel driver (name is "intel") which is supported with SuSE 10.3
+> for the first time. The driver is not perfect but it supports different
+> dualhead modes and different resolutions per screen.
+> 
+> Regards,
+> Marcus
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20071122/f437b6ed/attachment.html>
+

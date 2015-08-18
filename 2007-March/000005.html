@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-users]  Help with fglrx!!!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-users/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-users%40lists.berlios.de?Subject=Re%3A%20%5BSax-users%5D%20%20Help%20with%20fglrx%21%21%21&In-Reply-To=%3C23907294.20070320091325%40gmx.at%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000004.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-users]  Help with fglrx!!!</H1>
+    <B>Anton Sharonov</B> 
+    <A HREF="mailto:sax-users%40lists.berlios.de?Subject=Re%3A%20%5BSax-users%5D%20%20Help%20with%20fglrx%21%21%21&In-Reply-To=%3C23907294.20070320091325%40gmx.at%3E"
+       TITLE="[Sax-users]  Help with fglrx!!!">russe at gmx.at
+       </A><BR>
+    <I>Tue Mar 20 09:13:25 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000004.html">[Sax-users] Help with fglrx!!!
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> half baked into linux, I use opensuse with a Dell Latitude C610 laptop.
+</I>&gt;<i> Radeon manage to give me 3D to my ATI Mobility LY video card, but I'm
+</I>&gt;<i> unable to set fglrx ! I trid many things, back and forth, and it still
+</I>&gt;<i> won't pick.
+</I>&gt;<i> 
+</I>&gt;<i> 1&#176;) Does it have too? I mean, I get 3D working after all
+</I>&gt;<i> 
+</I>&gt;<i> 2&#176;) If it have too, how to set it up? Will I have to recompile my
+</I>&gt;<i> kernel, etc...
+</I>&gt;<i> 
+</I>&gt;<i> 3&#176;) After seting up fglrx,  and then running X, it tells me &quot;no device
+</I>&gt;<i> found&quot;, and I have to go back to radeon.
+</I>&gt;<i> 
+</I>&gt;<i> 4&#176;) Someone wants to loose time with a newby to explain what I have to
+</I>&gt;<i> do, if anything?
+</I>&gt;<i> 
+</I>&gt;<i> Tks!
+</I>
+According my experience -- not very big --, (first Radeon 7200, than
+Radeon 9250 SE on desktop (openSUSE 10.0 i586), Radeon Mobility 9600
+in notebook (openSUSE 10.2 i586)):
+
+=1= ATI proprietary driver (fglrx) must be selected only if something
+is not covered by (radeon) open-source driver. In my case everything
+was smooth w. (radeon), excepting missing TV-Out support (for the
+desktop) and 3D/OpenGL (on notebook - for this new Compiz 3D window
+manager, has not worked w. (radeon)). Since in your setup you have 3D
+already w. (radeon) - then hopefully (fglrx) setup is not necessary
+for you.
+
+=2= It's a tricky task, i have googled for manuals/how-to's and tried
+several of them before it has worked. As i can remember, after initial
+generating w. (SaX) i'm ended up w. practically hand-written
+/etc/X11/xorg.conf (unfortunately w/o deep understanding - just taking
+this and that from various examples).
+
+=3= Try to start w. examining /var/log/Xorg.0.log - what is exact
+messages there ? How does you do switching (radeon)/(fglrx) - tweaking
+/etc/X11/xorg.conf ? Using SaX (don't know if it really possible) ?
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000004.html">[Sax-users] Help with fglrx!!!
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-users">More information about the Sax-users
+mailing list</a><br>
+</body></html>

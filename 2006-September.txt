@@ -1,0 +1,19 @@
+From dwillson at parsec.com  Tue Sep 12 07:09:23 2006
+From: dwillson at parsec.com (David L. Willson)
+Date: Mon, 11 Sep 2006 23:09:23 -0600
+Subject: [Sax-users] xrandr doesn't show modes?
+Message-ID: <FEE984D73FF17F47BBD071551E82FD6339B68D@pgsv-data-1.parsec.local>
+
+OK, to be honest, I'm not sure this is a sax problem, but I ran into this list while heading in to modify my xorg.conf like every article I found said to...
+
+I'm using SUSE 10.1.  I have a widescreen laptop (DV8000 w/NVIDIA).  It supports all the widescreen modes.  They are (or were) listed in xorg.conf as modes and even in the modeline, but they're NOT accessible from the SUSE resapplet or from xrandr or from <CTRL><ALT><KP+|->.  Why?  Where's the old sax tab where I got to choose the modes I wanted to use and not use?
+
+David L. Willson
+Parsec Trainer/Consultant
+MCT, MCSE, Linux+
+tel://720.333.LANS
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20060911/488bcd94/attachment.html>
+

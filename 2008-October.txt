@@ -1,0 +1,24 @@
+From ayal.baron at rocketier.com  Wed Oct 22 17:22:31 2008
+From: ayal.baron at rocketier.com (Ayal Baron)
+Date: Wed, 22 Oct 2008 17:22:31 +0200
+Subject: [Sax-users] nvidia quadro 290 resolutions not detected with sax2 on
+	openSuSE 11.0
+Message-ID: <ac1e627c0810220822p5560f2e7qd2fcde7aeacd1e4f@mail.gmail.com>
+
+Hi all,
+
+I am running opensuse 11.0 on several computers and I'm using sax2 to
+automatically configure xorg.conf (sax --auto -r)
+Up to now it managed to automatically detect video card resolutions with no
+problem, but with the nvidia quadro nvs 290 it only detects 800x600, even
+though both the card and screen can go much higher.
+Manually configuring xorg.conf works fine, but I need the auto detect
+because I am deploying an app on many computers and do not know ahead of
+time what hardware configuration the computers have.
+
+I am using the binary nvidia driver.
+Am I missing something?
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20081022/230351f1/attachment.html>
+

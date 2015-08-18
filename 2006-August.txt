@@ -1,0 +1,61 @@
+From me11ne at yahoo.co.uk  Thu Aug  3 03:17:56 2006
+From: me11ne at yahoo.co.uk (Nicholas Epiphaniou)
+Date: Thu, 3 Aug 2006 01:17:56 +0000 (GMT)
+Subject: [Sax-users] Problem
+Message-ID: <20060803011756.70609.qmail@web86809.mail.ukl.yahoo.com>
+
+Dear Sir 
+ 
+I am a new to linux. I recently have installed suse 10.1. i did a silly mistake to modify the xorg.conf file located in /etc/X11. The X server is unable to start by typing startx. the error says:
+ 
+Fatal server error:
+Unrecognised option: -xgl 
+ 
+/usr/X11R6/bin/xinit: Connection refused (errno 111): unable to connect to X server
+/usr/X11R6/bin/xinit: No such a process (errno 3): Server error.
+ 
+I have change to xorg.conf to be the same as the original but it refuses still to start the X server. Could you please help me on this one, how to generate the config file so that the X server start and log on to suse environment.
+ 
+Best Regards, 
+ 
+Nicholas
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20060803/f6f63781/attachment.html>
+
+From sndirsch at suse.de  Thu Aug  3 03:33:39 2006
+From: sndirsch at suse.de (Stefan Dirsch)
+Date: Thu, 3 Aug 2006 03:33:39 +0200
+Subject: [Sax-users] Problem
+In-Reply-To: <20060803011756.70609.qmail@web86809.mail.ukl.yahoo.com>
+References: <20060803011756.70609.qmail@web86809.mail.ukl.yahoo.com>
+Message-ID: <20060803013339.GA29280@suse.de>
+
+On Thu, Aug 03, 2006 at 01:17:56AM +0000, Nicholas Epiphaniou wrote:
+> Dear Sir 
+>  
+> I am a new to linux. I recently have installed suse 10.1. i did a silly mistake to modify the xorg.conf file located in /etc/X11. The X server is unable to start by typing startx. the error says:
+>  
+> Fatal server error:
+> Unrecognised option: -xgl 
+>  
+> /usr/X11R6/bin/xinit: Connection refused (errno 111): unable to connect to X server
+> /usr/X11R6/bin/xinit: No such a process (errno 3): Server error.
+>  
+> I have change to xorg.conf to be the same as the original but it refuses still to start the X server. Could you please help me on this one, how to generate the config file so that the X server start and log on to suse environment.
+
+Regenerate it with "sax2 -r".
+
+Best regards,
+Stefan
+
+Public Key available
+------------------------------------------------------
+Stefan Dirsch (Res. & Dev.)   SUSE LINUX Products GmbH
+Tel: 0911-740 53 0            Maxfeldstra?e 5
+FAX: 0911-740 53 479          D-90409 N?rnberg
+http://www.suse.de            Germany 
+------------------------------------------------------
+
+

@@ -1,0 +1,100 @@
+From jacummings at novell.com  Wed Jun 20 22:36:08 2007
+From: jacummings at novell.com (Jamie Cummings)
+Date: Wed, 20 Jun 2007 14:36:08 -0600
+Subject: [Sax-users] Can't change resolution with sax
+Message-ID: <46793AEF.262B.0093.0@novell.com>
+
+I'm running SLES10 SP1 with a Dell E207WFP monitor. When I open YaST and click on Graphics Card and Monitor I find a default resolution of 1024x768 (XGA) with Colors at 16 bit. SaX2 reports my monitor as a DEL DELL E207 WFP. First off I find it odd that my Monitor shows up under DEL instead of DELL, but it at least gets the Sync Frequencies correct.
+
+The major issue is this:
+When I try to change the resolution of the monitor it takes me through the whole processes of Testing, Saving, and you will need to restart X before the changes take effect. Incidentally, when I test the configuration it says Screen [0]: 1024x768 @60 Khz : 76 Hz. But I can completely reboot the machine and nothing changes. 
+
+I tried running sax2 from the command line. I get the following set of messages:
+SaX: initializing please wait...
+SaX: you current configuration will not be read in 
+
+SaX: access to you display is denied. 
+
+SaX: startup
+
+And then it takes me into the usual graphical interface.
+
+I'm particularly confused about the denial of access to my display. I'm root when I do these commands. I ran strace with it and found the /usr/sbin/sax.sh file. From there I was able to trace the output down to the configuration message. It then seems to jump to the startup message. Unless the...
+
+$INIT $IN_OPT --quiet no 
+
+...line is generating it. 
+
+I can get it to grant me access if I'm graphically logged in and have YaST open, in which case SaX2 opens in my graphical console.. But I still can't get it to change the resolution.
+Setting the Monitor as a generic LCD doesn't help. Setting it as VESA doesn't help. Going into /etc/X11/xorg.conf and deleting or commenting out the lower resolutions doesn't help. 
+
+Any suggestions would be very much appreciated.
+
+-Jamie Cummings-
+jacummings at novell.com
+
+
+From elitim at gmail.com  Thu Jun 21 18:30:59 2007
+From: elitim at gmail.com (papadeb)
+Date: Thu, 21 Jun 2007 18:30:59 +0200
+Subject: [Sax-users] hey!
+In-Reply-To: <46793AEF.262B.0093.0@novell.com>
+References: <46793AEF.262B.0093.0@novell.com>
+Message-ID: <200706211830.59273.elitim@gmail.com>
+
+Thanks to your post, I did research how to setup better my X, and under 
+DEbian, it was a breeze! Well, I understand your are using a specific Suse 
+Product with Nowell, but give it a try with another computer!
+A converted!	 
+
+Le mercredi 20 juin 2007 22:36, Jamie Cummings a ?crit?:
+> I'm running SLES10 SP1 with a Dell E207WFP monitor. When I open YaST and
+> click on Graphics Card and Monitor I find a default resolution of 1024x768
+> (XGA) with Colors at 16 bit. SaX2 reports my monitor as a DEL DELL E207
+> WFP. First off I find it odd that my Monitor shows up under DEL instead of
+> DELL, but it at least gets the Sync Frequencies correct.
+>
+> The major issue is this:
+> When I try to change the resolution of the monitor it takes me through the
+> whole processes of Testing, Saving, and you will need to restart X before
+> the changes take effect. Incidentally, when I test the configuration it
+> says Screen [0]: 1024x768 @60 Khz : 76 Hz. But I can completely reboot the
+> machine and nothing changes.
+>
+> I tried running sax2 from the command line. I get the following set of
+> messages: SaX: initializing please wait...
+> SaX: you current configuration will not be read in
+>
+> SaX: access to you display is denied.
+>
+> SaX: startup
+>
+> And then it takes me into the usual graphical interface.
+>
+> I'm particularly confused about the denial of access to my display. I'm
+> root when I do these commands. I ran strace with it and found the
+> /usr/sbin/sax.sh file. From there I was able to trace the output down to
+> the configuration message. It then seems to jump to the startup message.
+> Unless the...
+>
+> $INIT $IN_OPT --quiet no
+>
+> ...line is generating it.
+>
+> I can get it to grant me access if I'm graphically logged in and have YaST
+> open, in which case SaX2 opens in my graphical console.. But I still can't
+> get it to change the resolution. Setting the Monitor as a generic LCD
+> doesn't help. Setting it as VESA doesn't help. Going into
+> /etc/X11/xorg.conf and deleting or commenting out the lower resolutions
+> doesn't help.
+>
+> Any suggestions would be very much appreciated.
+>
+> -Jamie Cummings-
+> jacummings at novell.com
+> _______________________________________________
+> Sax-users mailing list
+> Sax-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/sax-users
+
+

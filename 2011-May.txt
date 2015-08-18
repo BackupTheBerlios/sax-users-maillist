@@ -1,0 +1,19 @@
+From gatemaster at gmail.com  Tue May 31 14:52:51 2011
+From: gatemaster at gmail.com (Joe Pritoulskiy)
+Date: Tue, 31 May 2011 15:52:51 +0300
+Subject: [Sax-users] How to start SAX2 GUI / SUSE 11.4
+Message-ID: <BANLkTinU0Q1WDT5V2Z7Ea1w3uuJWJ6hzUA@mail.gmail.com>
+
+Hello!
+
+I'm running OpenSUSE 11.4/
+
+I have a problem. I cant find sax2 gui. I.e. Ihave it installed but in YaST
+there is no link to GUI. Also if I want to start it from terminal - it sais
+that it can't find such a command...
+
+Pls help me. I've searched everywhere but useless.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20110531/95a96245/attachment.html>
+

@@ -1,0 +1,17 @@
+From elitim at gmail.com  Mon May 28 23:18:58 2007
+From: elitim at gmail.com (tim tim)
+Date: Mon, 28 May 2007 23:18:58 +0200
+Subject: [Sax-users] ati again...
+Message-ID: <e4e79f270705281418v4a53a7fci313795a88b9e058d@mail.gmail.com>
+
+I would like to connect my laptop DELL LATITUDE C610 to the TV, using the
+s-video cable...I got double screen, but the output on the tv is out of
+sinc...I tried to configure it myself, but lo and alas, I CAN'T...my video
+card is mobility M6, it doesn't work with ati prorietary drivers, but does
+fine with 3d with radeon...Atitvout tells me that CRT is attached, I don't
+know how to install GATOS, nor do I know what to put in my
+xorg.conffile...Soemone helps me?
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20070528/63da051a/attachment.html>
+

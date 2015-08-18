@@ -1,0 +1,75 @@
+From elitim at gmail.com  Tue Mar 20 02:08:50 2007
+From: elitim at gmail.com (Daniel)
+Date: Tue, 20 Mar 2007 02:08:50 +0100
+Subject: [Sax-users] Help with fglrx!!!
+Message-ID: <1174352930.13846.5.camel@linux-9vu9.site>
+
+half baked into linux, I use opensuse with a Dell Latitude C610 laptop.
+Radeon manage to give me 3D to my ATI Mobility LY video card, but I'm
+unable to set fglrx ! I trid many things, back and forth, and it still
+won't pick.
+
+1?) Does it have too? I mean, I get 3D working after all
+
+2?) If it have too, how to set it up? Will I have to recompile my
+kernel, etc...
+
+3?) After seting up fglrx,  and then running X, it tells me "no device
+found", and I have to go back to radeon.
+
+4?) Someone wants to loose time with a newby to explain what I have to
+do, if anything?
+
+Tks!
+
+
+
+From russe at gmx.at  Tue Mar 20 09:13:25 2007
+From: russe at gmx.at (Anton Sharonov)
+Date: Tue, 20 Mar 2007 09:13:25 +0100
+Subject: [Sax-users]  Help with fglrx!!!
+Message-ID: <23907294.20070320091325@gmx.at>
+
+> half baked into linux, I use opensuse with a Dell Latitude C610 laptop.
+> Radeon manage to give me 3D to my ATI Mobility LY video card, but I'm
+> unable to set fglrx ! I trid many things, back and forth, and it still
+> won't pick.
+> 
+> 1?) Does it have too? I mean, I get 3D working after all
+> 
+> 2?) If it have too, how to set it up? Will I have to recompile my
+> kernel, etc...
+> 
+> 3?) After seting up fglrx,  and then running X, it tells me "no device
+> found", and I have to go back to radeon.
+> 
+> 4?) Someone wants to loose time with a newby to explain what I have to
+> do, if anything?
+> 
+> Tks!
+
+According my experience -- not very big --, (first Radeon 7200, than
+Radeon 9250 SE on desktop (openSUSE 10.0 i586), Radeon Mobility 9600
+in notebook (openSUSE 10.2 i586)):
+
+=1= ATI proprietary driver (fglrx) must be selected only if something
+is not covered by (radeon) open-source driver. In my case everything
+was smooth w. (radeon), excepting missing TV-Out support (for the
+desktop) and 3D/OpenGL (on notebook - for this new Compiz 3D window
+manager, has not worked w. (radeon)). Since in your setup you have 3D
+already w. (radeon) - then hopefully (fglrx) setup is not necessary
+for you.
+
+=2= It's a tricky task, i have googled for manuals/how-to's and tried
+several of them before it has worked. As i can remember, after initial
+generating w. (SaX) i'm ended up w. practically hand-written
+/etc/X11/xorg.conf (unfortunately w/o deep understanding - just taking
+this and that from various examples).
+
+=3= Try to start w. examining /var/log/Xorg.0.log - what is exact
+messages there ? How does you do switching (radeon)/(fglrx) - tweaking
+/etc/X11/xorg.conf ? Using SaX (don't know if it really possible) ?
+
+
+
+

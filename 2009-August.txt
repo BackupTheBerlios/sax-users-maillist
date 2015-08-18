@@ -1,0 +1,40 @@
+From Andreas.Lindner at ESG.DE  Fri Aug  7 09:39:08 2009
+From: Andreas.Lindner at ESG.DE (Andreas Lindner)
+Date: Fri, 7 Aug 2009 09:39:08 +0200
+Subject: [Sax-users] =?iso-8859-1?q?=22SaX2_-a_-l=22_doesn=B4t_work_the_fi?=
+	=?iso-8859-1?q?rst_time?=
+Message-ID: <OF61720952.962EC142-ONC125760B.00285037-C125760B.002A0A05@esg-gmbh.de>
+
+Hello 2009,
+
+I changed my /etc/init.d/xdm and if no xorg.conf exists it will call
+"SaX2 -a -l" (for kiwi)
+But the result is a xorg.conf which includes modelines up to 1280x1024
+#SaX2 -p 
+Chip: 0  is -> ATI ES1000 515E                  15:13:0 0x1002 0x515e AGP 
+radeon
+
+But if I stop xdm afterwards and call SaX2 -a -l again everything is like 
+expected.
+It also works like expected in Virtual Machines.
+I even tried it with the --vesa option, but no chance.
+
+How can i tame the X resolution direct after boot?
+
+
+Thanks,
+Andy
+______________________________________________________________________________________________________________
+
+ESG Elektroniksystem- und Logistik-GmbH
+Rechtsform/Legal Form: Gesellschaft mit beschr?nkter Haftung
+Sitz/Registered Office: M?nchen
+Handelsregister/Commercial Register: Registergericht M?nchen, HRB 8130
+Vorsitzender des Aufsichtsrats/Chairman of the Supervisory Board: Peter 
+Obermark
+Vorsitzender der Gesch?ftsf?hrung/CEO: Dipl.-Math. Gerhard Schempp, 
+Gesch?ftsf?hrer/Managing Director: Dipl.-Kfm. G?tz Graichen
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/sax-users/attachments/20090807/e61fb607/attachment.html>
+

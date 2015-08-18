@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-users] Dell SP2008WFP Configuration with SLED
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-users/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-users%40lists.berlios.de?Subject=Re%3A%20%5BSax-users%5D%20Dell%20SP2008WFP%20Configuration%20with%20SLED&In-Reply-To=%3C200711212239.55336.elitim%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-users] Dell SP2008WFP Configuration with SLED</H1>
+    <B>daniel</B> 
+    <A HREF="mailto:sax-users%40lists.berlios.de?Subject=Re%3A%20%5BSax-users%5D%20Dell%20SP2008WFP%20Configuration%20with%20SLED&In-Reply-To=%3C200711212239.55336.elitim%40gmail.com%3E"
+       TITLE="[Sax-users] Dell SP2008WFP Configuration with SLED">elitim at gmail.com
+       </A><BR>
+    <I>Wed Nov 21 22:39:52 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000009.html">[Sax-users] Dell SP2008WFP Configuration with SLED
+</A></li>
+        <LI>Next message: <A HREF="000011.html">[Sax-users] Dell SP2008WFP Configuration with SLED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi! I'm using Debian now. I managed to have both monitors working, with 
+xinerama...according to your config, you have both monitors showing the SAME 
+screen, right?
+How do you plug the monitors? With the inboard vga out, I guess...look for 
+some config of the module of your card, normally, this model works well...
+
+Is there any special key on your laptop, like crt/lcd or A/A, etc...On my Dell 
+laptop, I have this key, I can't remember now if it had to be configured 
+too...
+
+sometimes also my dual wasn't working right away, but if I resarted my 
+session, it worked...
+
+I don't use it anymore, as I have a desktop better for graphics now, it wasn't 
+the case before, my laptop was better than my desktop, regarding graphic 
+chip...
+
+Anyway, these are just a little clues...Have both monitors plugged and on, 
+start your computer
+
+Hum, I'm looking again your file, there is only ONE screen setup, I think you 
+need to declare screen0 AND screen1, then map accordingly...like you need to 
+have two time the same file, and you need to declare monitor0, monitor1, 
+screen0, screen1, then map accordingly...
+
+If you want, I can try to find my old xinerama file, but I think I erased it, 
+sorry...
+
+Anyway, stay in touch, if you don't have a working solution, I can look more 
+deeply into it!
+
+
+
+On Wednesday 21 November 2007 19:26:22 Nachiketa Mishra wrote:
+&gt;<i> Hi Guys,
+</I>&gt;<i> I am trying to configure the Dell Monitor SP2008WFP for dual head and I
+</I>&gt;<i> am not able to configure. The problems are
+</I>&gt;<i>
+</I>&gt;<i> 1] I am not able to run the monitor and my laptop as separate windows. I
+</I>&gt;<i> am using a Dell Inspiron 1405 with Intel 945GM chipset and i810 driver
+</I>&gt;<i> which came default with Suse 10.2
+</I>&gt;<i>
+</I>&gt;<i> 2] I tried changing the xorg.conf and still not able to get dual
+</I>&gt;<i> monitors working. This is my xorg.conf
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Files&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/misc:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/local&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/75dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/100dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/Type1&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/URW&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/Speedo&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/PEX&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/cyrillic&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/latin2/misc:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/latin2/75dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/latin2/100dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/latin2/Type1&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/latin7/75dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/baekmuk:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/japanese:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/kwintv&quot;
+</I>&gt;<i>  FontPath     &quot;/usr/X11R6/lib/X11/fonts/truetype&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/uni:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/CID&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/ucs/misc:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/ucs/75dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/ucs/100dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/hellas/misc:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/hellas/75dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/hellas/100dpi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/hellas/Type1&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/misc/sgi:unscaled&quot;
+</I>&gt;<i>   FontPath     &quot;/usr/X11R6/lib/X11/fonts/xtest&quot;
+</I>&gt;<i>   FontPath     &quot;/opt/kde3/share/fonts&quot;
+</I>&gt;<i>   InputDevices &quot;/dev/gpmdata&quot;
+</I>&gt;<i>   InputDevices &quot;/dev/input/mice&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;ServerFlags&quot;
+</I>&gt;<i>   Option       &quot;AllowMouseOpenFail&quot; &quot;on&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Module&quot;
+</I>&gt;<i>   Load         &quot;freetype&quot;
+</I>&gt;<i>   Load         &quot;type1&quot;
+</I>&gt;<i>   Load         &quot;dbe&quot;
+</I>&gt;<i>   Load         &quot;glx&quot;
+</I>&gt;<i>   Load         &quot;extmod&quot;
+</I>&gt;<i>   Load         &quot;v4l&quot;
+</I>&gt;<i>   Load         &quot;dri&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;InputDevice&quot;
+</I>&gt;<i>   Driver       &quot;kbd&quot;
+</I>&gt;<i>   Identifier   &quot;Keyboard[0]&quot;
+</I>&gt;<i>   Option       &quot;Protocol&quot; &quot;Standard&quot;
+</I>&gt;<i>   Option       &quot;XkbLayout&quot; &quot;us&quot;
+</I>&gt;<i>   Option       &quot;XkbModel&quot; &quot;pc104&quot;
+</I>&gt;<i>   Option       &quot;XkbRules&quot; &quot;xfree86&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;InputDevice&quot;
+</I>&gt;<i>   Driver       &quot;synaptics&quot;
+</I>&gt;<i>   Identifier   &quot;Mouse[1]&quot;
+</I>&gt;<i>   Option       &quot;Device&quot; &quot;/dev/input/mice&quot;
+</I>&gt;<i>   Option       &quot;Emulate3Buttons&quot; &quot;on&quot;
+</I>&gt;<i>   Option       &quot;Name&quot; &quot;Touchpad&quot;
+</I>&gt;<i>   Option       &quot;SHMConfig&quot; &quot;on&quot;
+</I>&gt;<i>   Option       &quot;Vendor&quot; &quot;Synaptics&quot;
+</I>&gt;<i>   Option       &quot;ZAxisMapping&quot; &quot;4 5&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;InputDevice&quot;
+</I>&gt;<i>   Driver       &quot;mouse&quot;
+</I>&gt;<i>   Identifier   &quot;Mouse[3]&quot;
+</I>&gt;<i>   Option       &quot;Buttons&quot; &quot;5&quot;
+</I>&gt;<i>   Option       &quot;Device&quot; &quot;/dev/input/mice&quot;
+</I>&gt;<i>   Option       &quot;Name&quot; &quot;ImPS/2 Generic Wheel Mouse&quot;
+</I>&gt;<i>   Option       &quot;Protocol&quot; &quot;explorerps/2&quot;
+</I>&gt;<i>   Option       &quot;Vendor&quot; &quot;Sysp&quot;
+</I>&gt;<i>   Option       &quot;ZAxisMapping&quot; &quot;4 5&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Monitor&quot;
+</I>&gt;<i>   DisplaySize  300 190
+</I>&gt;<i>   HorizSync    28-70
+</I>&gt;<i>   Identifier   &quot;Monitor[0]&quot;
+</I>&gt;<i>   ModelName    &quot;CG002 141WD LCD MONITOR&quot;
+</I>&gt;<i>   Option       &quot;DPMS&quot;
+</I>&gt;<i>   VendorName   &quot;SEC&quot;
+</I>&gt;<i>   VertRefresh  43-60
+</I>&gt;<i>   UseModes     &quot;Modes[0]&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Monitor&quot;
+</I>&gt;<i>   DisplaySize  320 240
+</I>&gt;<i>   HorizSync    30-83
+</I>&gt;<i>   Identifier   &quot;Monitor[1]&quot;
+</I>&gt;<i>   ModelName    &quot;DELL DellSP2008WFP&quot;
+</I>&gt;<i>   Option       &quot;DPMS&quot;
+</I>&gt;<i>   VendorName   &quot;DELL&quot;
+</I>&gt;<i>   VertRefresh  56-76
+</I>&gt;<i>   UseModes     &quot;Modes[1]&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Modes&quot;
+</I>&gt;<i>   Identifier   &quot;Modes[0]&quot;
+</I>&gt;<i>   Modeline      &quot;1440x900&quot; 102.81 1440 1520 1672 1904 900 901 904 931
+</I>&gt;<i>   Modeline      &quot;1366x768&quot; 82.16 1368 1432 1576 1784 768 769 772 794
+</I>&gt;<i>   Modeline      &quot;1280x800&quot; 80.58 1280 1344 1480 1680 800 801 804 827
+</I>&gt;<i>   Modeline      &quot;1152x864&quot; 78.82 1152 1216 1336 1520 864 865 868 894
+</I>&gt;<i>   Modeline      &quot;1280x768&quot; 77.37 1280 1344 1480 1680 768 769 772 794
+</I>&gt;<i>   Modeline      &quot;1024x768&quot; 61.89 1024 1080 1184 1344 768 769 772 794
+</I>&gt;<i>   Modeline      &quot;1280x600&quot; 58.78 1280 1328 1456 1632 600 601 604 621
+</I>&gt;<i>   Modeline      &quot;1024x600&quot; 47.26 1024 1064 1168 1312 600 601 604 621
+</I>&gt;<i>   Modeline      &quot;800x600&quot; 36.88 800 832 912 1024 600 601 604 621
+</I>&gt;<i>   Modeline      &quot;768x576&quot; 33.74 768 792 872 976 576 577 580 596
+</I>&gt;<i>   Modeline      &quot;640x480&quot; 23.86 640 656 720 800 480 481 484 497
+</I>&gt;<i>   Modeline      &quot;640x480&quot; 23.06 640 656 720 800 480 481 484 497
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Modes&quot;
+</I>&gt;<i>   Identifier   &quot;Modes[1]&quot;
+</I>&gt;<i>   Modeline      &quot;1440x900&quot; 134.52 1440 1536 1688 1936 900 901 904 939
+</I>&gt;<i>   Modeline      &quot;1440x900&quot; 132.71 1440 1536 1688 1936 900 901 904 939
+</I>&gt;<i>   Modeline      &quot;1440x900&quot; 130.75 1440 1536 1688 1936 900 901 904 938
+</I>&gt;<i>   Modeline      &quot;1366x768&quot; 107.78 1368 1448 1592 1816 768 769 772 802
+</I>&gt;<i>   Modeline      &quot;1366x768&quot; 106.19 1368 1448 1592 1816 768 769 772 801
+</I>&gt;<i>   Modeline      &quot;1366x768&quot; 104.73 1368 1448 1592 1816 768 769 772 801
+</I>&gt;<i>   Modeline      &quot;1280x800&quot; 105.78 1280 1360 1496 1712 800 801 804 835
+</I>&gt;<i>   Modeline      &quot;1280x800&quot; 104.35 1280 1360 1496 1712 800 801 804 835
+</I>&gt;<i>   Modeline      &quot;1280x800&quot; 102.80 1280 1360 1496 1712 800 801 804 834
+</I>&gt;<i>   Modeline      &quot;1152x864&quot; 103.59 1152 1224 1352 1552 864 865 868 902
+</I>&gt;<i>   Modeline      &quot;1152x864&quot; 102.08 1152 1224 1352 1552 864 865 868 901
+</I>&gt;<i>   Modeline      &quot;1152x864&quot; 99.64 1152 1224 1344 1536 864 865 868 901
+</I>&gt;<i>   Modeline      &quot;1280x768&quot; 101.60 1280 1360 1496 1712 768 769 772 802
+</I>&gt;<i>   Modeline      &quot;1280x768&quot; 99.17 1280 1352 1488 1696 768 769 772 801
+</I>&gt;<i>   Modeline      &quot;1280x768&quot; 97.81 1280 1352 1488 1696 768 769 772 801
+</I>&gt;<i>   Modeline      &quot;1024x768&quot; 80.71 1024 1080 1192 1360 768 769 772 802
+</I>&gt;<i>   Modeline      &quot;1024x768&quot; 79.52 1024 1080 1192 1360 768 769 772 801
+</I>&gt;<i>   Modeline      &quot;1024x768&quot; 78.43 1024 1080 1192 1360 768 769 772 801
+</I>&gt;<i>   Modeline      &quot;1280x600&quot; 77.82 1280 1344 1480 1680 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;1280x600&quot; 76.04 1280 1336 1472 1664 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;1280x600&quot; 75.00 1280 1336 1472 1664 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;1024x600&quot; 62.26 1024 1080 1184 1344 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;1024x600&quot; 61.42 1024 1080 1184 1344 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;1024x600&quot; 59.86 1024 1072 1176 1328 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;800x600&quot; 48.18 800 840 920 1040 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;800x600&quot; 47.53 800 840 920 1040 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;800x600&quot; 46.87 800 840 920 1040 600 601 604 626
+</I>&gt;<i>   Modeline      &quot;768x576&quot; 44.83 768 808 888 1008 576 577 580 601
+</I>&gt;<i>   Modeline      &quot;768x576&quot; 43.52 768 800 880 992 576 577 580 601
+</I>&gt;<i>   Modeline      &quot;768x576&quot; 42.93 768 800 880 992 576 577 580 601
+</I>&gt;<i>   Modeline      &quot;640x480&quot; 30.25 640 664 728 816 480 481 484 501
+</I>&gt;<i>   Modeline      &quot;640x480&quot; 29.84 640 664 728 816 480 481 484 501
+</I>&gt;<i>   Modeline      &quot;640x480&quot; 29.43 640 664 728 816 480 481 484 501
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Screen&quot;
+</I>&gt;<i>   DefaultDepth 24
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      15
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      16
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      24
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      8
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   Device       &quot;Device[0]&quot;
+</I>&gt;<i>   Identifier   &quot;Screen[0]&quot;
+</I>&gt;<i>   Monitor      &quot;Monitor[0]&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Screen&quot;
+</I>&gt;<i>   DefaultDepth 24
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      15
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      16
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      24
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   SubSection &quot;Display&quot;
+</I>&gt;<i>     Depth      8
+</I>&gt;<i>     Modes      &quot;1440x900&quot; &quot;1366x768&quot; &quot;1280x800&quot; &quot;1152x864&quot; &quot;1280x768&quot;
+</I>&gt;<i> &quot;1024x768&quot; &quot;1280x600&quot; &quot;1024x600&quot; &quot;800x600&quot; &quot;768x576&quot; &quot;640x480&quot;
+</I>&gt;<i>   EndSubSection
+</I>&gt;<i>   Device       &quot;Device[0]&quot;
+</I>&gt;<i>   Identifier   &quot;Screen[1]&quot;
+</I>&gt;<i>   Monitor      &quot;Monitor[1]&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Device&quot;
+</I>&gt;<i>   BoardName    &quot;945 GM&quot;
+</I>&gt;<i>   BusID        &quot;0:2:0&quot;
+</I>&gt;<i>   Driver       &quot;i810&quot;
+</I>&gt;<i>   Identifier   &quot;Device[0]&quot;
+</I>&gt;<i>   Option       &quot;SaXDualHead&quot;
+</I>&gt;<i>   Option       &quot;Clone&quot;
+</I>&gt;<i>   Option       &quot;NoDDC&quot;
+</I>&gt;<i>   Option       &quot;LFP&quot; &quot;&quot;
+</I>&gt;<i>   Option       &quot;usevnc&quot; &quot;no&quot;
+</I>&gt;<i>   Option       &quot;MonitorLayout&quot; &quot;CRT,LFP&quot;
+</I>&gt;<i>   Option       &quot;SaXDualMonitorVendor&quot; &quot;--&gt; VESA&quot;
+</I>&gt;<i>   Option       &quot;SaXDualOrientation&quot; &quot;off&quot;
+</I>&gt;<i>   Option       &quot;SaXDualResolution&quot; &quot;off&quot;
+</I>&gt;<i>   Option       &quot;CloneRefresh&quot; &quot;50-60&quot;
+</I>&gt;<i>   Option       &quot;SaXDualMode&quot; &quot;off&quot;
+</I>&gt;<i>   Option       &quot;SaXDualHSync&quot; &quot;off&quot;
+</I>&gt;<i>   Option       &quot;SaXDualMonitorModel&quot; &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-users">1024X768 at 60HZ</A>&quot;
+</I>&gt;<i>   Option       &quot;SaXDualVSync&quot; &quot;50-60&quot;
+</I>&gt;<i>   Screen       0
+</I>&gt;<i>   VendorName   &quot;Intel&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;ServerLayout&quot;
+</I>&gt;<i>   Identifier   &quot;Layout[all]&quot;
+</I>&gt;<i>   InputDevice  &quot;Keyboard[0]&quot; &quot;CoreKeyboard&quot;
+</I>&gt;<i>   InputDevice  &quot;Mouse[1]&quot; &quot;CorePointer&quot;
+</I>&gt;<i>   InputDevice  &quot;Mouse[3]&quot; &quot;SendCoreEvents&quot;
+</I>&gt;<i>   Option       &quot;Clone&quot; &quot;off&quot;
+</I>&gt;<i>   Option       &quot;Xinerama&quot; &quot;off&quot;
+</I>&gt;<i>   Screen       &quot;Screen[0]&quot;
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;DRI&quot;
+</I>&gt;<i>     Group      &quot;video&quot;
+</I>&gt;<i>     Mode       0660
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Extensions&quot;
+</I>&gt;<i> EndSection
+</I>
+
+
+-- 
+Je viens de publier mon premier livre:
+
+<A HREF="http://www.inlibroveritas.net/lire/oeuvre10296.html">http://www.inlibroveritas.net/lire/oeuvre10296.html</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000009.html">[Sax-users] Dell SP2008WFP Configuration with SLED
+</A></li>
+	<LI>Next message: <A HREF="000011.html">[Sax-users] Dell SP2008WFP Configuration with SLED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-users">More information about the Sax-users
+mailing list</a><br>
+</body></html>

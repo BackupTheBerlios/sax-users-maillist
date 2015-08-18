@@ -1,0 +1,36 @@
+From colorado_mountains2000 at yahoo.com  Mon Nov 27 04:41:30 2006
+From: colorado_mountains2000 at yahoo.com (Luke)
+Date: Sun, 26 Nov 2006 19:41:30 -0800 (PST)
+Subject: [Sax-users] Got a new Monitor not in SuSE 10.0
+Message-ID: <20061127034130.34659.qmail@web50611.mail.yahoo.com>
+
+I just bought a new monitor:Samsung SyncMaster 203b
+20".  I run SuSE 10.0.  My monitor isn't listed in the
+sax2GUI:monitor:change list.  I can actually get the
+monitor to run but it looks horrible/blurry (running
+as a VESA right now).  So naturally I should upgrade
+but I don't know how to go about this I have many
+different sources in yast2 but when I search for sax2
+it just shows what I have installed and doesn't have
+any available upgrades.
+
+Here's what I have (default SuSE 10.0):
+sax2:7.1-27
+sax2-gui:1.7-27
+sax2-ident:1.7-27
+sax2-libsax:7.1-27
+sax2-tools:2.7-27
+
+I guess my main question is how to I obtain the latest
+sax2 on SuSE 10.0?
+
+--Luke
+
+
+ 
+____________________________________________________________________________________
+Do you Yahoo!?
+Everyone is raving about the all-new Yahoo! Mail beta.
+http://new.mail.yahoo.com
+
+

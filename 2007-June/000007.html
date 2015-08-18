@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-users] Can't change resolution with sax
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-users/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:sax-users%40lists.berlios.de?Subject=Re%3A%20%5BSax-users%5D%20Can%27t%20change%20resolution%20with%20sax&In-Reply-To=%3C46793AEF.262B.0093.0%40novell.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000008.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-users] Can't change resolution with sax</H1>
+    <B>Jamie Cummings</B> 
+    <A HREF="mailto:sax-users%40lists.berlios.de?Subject=Re%3A%20%5BSax-users%5D%20Can%27t%20change%20resolution%20with%20sax&In-Reply-To=%3C46793AEF.262B.0093.0%40novell.com%3E"
+       TITLE="[Sax-users] Can't change resolution with sax">jacummings at novell.com
+       </A><BR>
+    <I>Wed Jun 20 22:36:08 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000008.html">[Sax-users] hey!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm running SLES10 SP1 with a Dell E207WFP monitor. When I open YaST and click on Graphics Card and Monitor I find a default resolution of 1024x768 (XGA) with Colors at 16 bit. SaX2 reports my monitor as a DEL DELL E207 WFP. First off I find it odd that my Monitor shows up under DEL instead of DELL, but it at least gets the Sync Frequencies correct.
+
+The major issue is this:
+When I try to change the resolution of the monitor it takes me through the whole processes of Testing, Saving, and you will need to restart X before the changes take effect. Incidentally, when I test the configuration it says Screen [0]: 1024x768 @60 Khz : 76 Hz. But I can completely reboot the machine and nothing changes. 
+
+I tried running sax2 from the command line. I get the following set of messages:
+SaX: initializing please wait...
+SaX: you current configuration will not be read in 
+
+SaX: access to you display is denied. 
+
+SaX: startup
+
+And then it takes me into the usual graphical interface.
+
+I'm particularly confused about the denial of access to my display. I'm root when I do these commands. I ran strace with it and found the /usr/sbin/sax.sh file. From there I was able to trace the output down to the configuration message. It then seems to jump to the startup message. Unless the...
+
+$INIT $IN_OPT --quiet no 
+
+...line is generating it. 
+
+I can get it to grant me access if I'm graphically logged in and have YaST open, in which case SaX2 opens in my graphical console.. But I still can't get it to change the resolution.
+Setting the Monitor as a generic LCD doesn't help. Setting it as VESA doesn't help. Going into /etc/X11/xorg.conf and deleting or commenting out the lower resolutions doesn't help. 
+
+Any suggestions would be very much appreciated.
+
+-Jamie Cummings-
+<A HREF="https://lists.berlios.de/mailman/listinfo/sax-users">jacummings at novell.com</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000008.html">[Sax-users] hey!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-users">More information about the Sax-users
+mailing list</a><br>
+</body></html>
